@@ -6,40 +6,58 @@
 <title>Vaibhav Sharma | XR Developer</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
 <script src="https://unpkg.com/scrollreveal"></script>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box}
 body{
 font-family:'Inter',sans-serif;
-background:#0a0a0f;
+background:#050509;
 color:#fff;
 overflow-x:hidden;
+cursor:none;
 }
 
-canvas{
+/* Custom Cursor */
+.cursor{
+width:15px;height:15px;
+border:2px solid #00f0ff;
+border-radius:50%;
 position:fixed;
-top:0;
-left:0;
-z-index:-1;
+pointer-events:none;
+transform:translate(-50%,-50%);
+transition:0.1s ease;
+z-index:9999;
+}
+
+/* Loader */
+.loader{
+position:fixed;
+width:100%;
+height:100vh;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:2000;
+font-size:2rem;
+letter-spacing:3px;
+animation:fadeOut 2s 2s forwards;
+}
+
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden;}
 }
 
 nav{
 position:fixed;
 width:100%;
-padding:20px 10%;
+padding:20px 8%;
 display:flex;
 justify-content:space-between;
-background:rgba(0,0,0,0.5);
-backdrop-filter:blur(15px);
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
 z-index:1000;
 }
 
@@ -47,39 +65,30 @@ nav a{
 color:#fff;
 text-decoration:none;
 margin-left:25px;
-font-weight:500;
 transition:0.3s;
 }
 
-nav a:hover{
-color:#00f0ff;
-}
+nav a:hover{color:#00f0ff;}
 
 .hero{
 height:100vh;
 display:flex;
+flex-direction:column;
 align-items:center;
 justify-content:center;
 text-align:center;
-padding:0 20px;
 }
 
 .hero h1{
-font-size:3.5rem;
+font-size:4rem;
 font-weight:800;
-background:linear-gradient(90deg,#00f0ff,#ff00d4);
+background:linear-gradient(90deg,#00f0ff,#ff00c8);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
-.hero h2{
-margin-top:15px;
-font-weight:500;
-color:#aaa;
-}
-
 .section{
-padding:120px 10%;
+padding:120px 8%;
 }
 
 .section h2{
@@ -90,162 +99,164 @@ text-align:center;
 
 .glass{
 background:rgba(255,255,255,0.05);
-backdrop-filter:blur(12px);
 border:1px solid rgba(255,255,255,0.1);
-border-radius:15px;
+backdrop-filter:blur(15px);
+border-radius:20px;
 padding:30px;
 transition:0.5s;
 }
 
 .glass:hover{
-transform:translateY(-10px);
-border-color:#00f0ff;
-box-shadow:0 0 30px rgba(0,240,255,0.3);
+transform:rotateX(5deg) rotateY(5deg);
+box-shadow:0 0 40px rgba(0,240,255,0.4);
 }
 
-.skills-grid{
+.grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:25px;
-}
-
-.skill-box{
-text-align:center;
-padding:30px;
-}
-
-.projects{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:30px;
 }
 
 .project-card img{
 width:100%;
-border-radius:10px;
+border-radius:12px;
 margin-bottom:15px;
 }
 
-.project-card h3{
-margin-bottom:10px;
+.button{
+display:inline-block;
+margin-top:15px;
+padding:10px 25px;
+border:1px solid #00f0ff;
+border-radius:30px;
+color:#00f0ff;
+text-decoration:none;
+transition:0.3s;
 }
 
-.project-card p{
-color:#bbb;
+.button:hover{
+background:#00f0ff;
+color:#000;
 }
 
-.contact{
+.stats{
+display:flex;
+justify-content:space-around;
+flex-wrap:wrap;
+gap:20px;
 text-align:center;
 }
 
-.contact a{
+.stat h3{
+font-size:3rem;
 color:#00f0ff;
-text-decoration:none;
-display:block;
-margin-top:10px;
 }
 
 footer{
 text-align:center;
 padding:40px;
-color:#666;
+color:#555;
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="bg"></canvas>
+<div class="loader">INITIALIZING XR SYSTEM...</div>
+<div class="cursor"></div>
 
 <nav>
 <div><strong>Vaibhav.dev</strong></div>
 <div>
 <a href="#about">About</a>
-<a href="#skills">Expertise</a>
+<a href="#expertise">Expertise</a>
 <a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
 </div>
 </nav>
 
 <section class="hero">
-<div>
 <h1>Vaibhav Sharma</h1>
 <h2><span id="typed"></span></h2>
-</div>
 </section>
 
 <section id="about" class="section">
-<h2>About Me</h2>
+<h2>About</h2>
 <div class="glass">
-<p>
-XR Developer with 2+ years of experience crafting immersive VR educational content 
-and Mixed Reality simulations. Passionate about building scalable interactive systems 
-with clean architecture and performance optimization.
-
-Hands-on expertise in Blender, Level Design, debugging complex systems, and solving 
-coding challenges with logical precision.
-</p>
+XR Developer with 2+ years of experience building immersive VR Educational Content,
+Mixed Reality Simulations, and Projector-based Interactive Systems.
+Experienced Team Lead with strong debugging mindset and passion for coding challenges.
+Hands-on with Blender, Level Design, and scalable system architecture.
 </div>
 </section>
 
-<section id="skills" class="section">
-<h2>Core Expertise</h2>
-<div class="skills-grid">
-<div class="glass skill-box">VR Educational Experiences</div>
-<div class="glass skill-box">Mixed Reality Simulation</div>
-<div class="glass skill-box">Unity + XR Toolkit</div>
-<div class="glass skill-box">Blender 3D Modeling</div>
-<div class="glass skill-box">Level Design</div>
-<div class="glass skill-box">Advanced Debugging</div>
-<div class="glass skill-box">Performance Optimization</div>
-<div class="glass skill-box">System Architecture</div>
+<section id="expertise" class="section">
+<h2>Expertise</h2>
+<div class="grid">
+<div class="glass">VR Education Systems</div>
+<div class="glass">Mixed Reality Simulation</div>
+<div class="glass">Projector Based Interactive Setup</div>
+<div class="glass">Blender & Level Design</div>
+<div class="glass">Advanced Debugging</div>
+<div class="glass">Team Leadership</div>
 </div>
 </section>
 
 <section id="projects" class="section">
-<h2>Featured Projects</h2>
-<div class="projects">
+<h2>Projects</h2>
+<div class="grid">
 
 <div class="glass project-card">
 <img src="project1.jpg">
-<h3>Immersive VR Education Platform</h3>
-<p>Interactive science and financial literacy simulations designed for deep conceptual understanding in VR.</p>
+<h3>VR Learning Universe</h3>
+<p>Immersive educational VR modules with optimized interaction systems.</p>
+<a href="https://github.com/yourusername/project1" target="_blank" class="button">View Code</a>
 </div>
 
 <div class="glass project-card">
 <img src="project2.jpg">
-<h3>Mixed Reality Industrial Simulation</h3>
-<p>Real-time MR simulation for training and visualization with optimized interaction systems.</p>
+<h3>MR Simulation Lab</h3>
+<p>Real-time mixed reality industrial training simulation.</p>
+<a href="https://github.com/yourusername/project2" target="_blank" class="button">View Code</a>
 </div>
 
 <div class="glass project-card">
 <img src="project3.jpg">
-<h3>XR Performance Optimization Toolkit</h3>
-<p>Debugging tools, memory tracking, and FPS optimization framework for scalable XR projects.</p>
+<h3>Interactive Projector Experience</h3>
+<p>Large scale projection-based interactive learning system.</p>
+<a href="https://github.com/yourusername/project3" target="_blank" class="button">View Code</a>
 </div>
 
 </div>
 </section>
 
-<section id="contact" class="section contact">
-<h2>Let's Build the Future</h2>
-<p>Email: vaibhav@email.com</p>
-<a href="#">GitHub</a>
-<a href="#">LinkedIn</a>
+<section class="section">
+<h2>Experience Stats</h2>
+<div class="stats">
+<div class="stat"><h3>2+</h3><p>Years XR</p></div>
+<div class="stat"><h3>15+</h3><p>XR Modules</p></div>
+<div class="stat"><h3>5+</h3><p>Team Projects</p></div>
+</div>
 </section>
 
-<footer>
-© 2026 Vaibhav Sharma | XR Developer
-</footer>
+<section id="contact" class="section">
+<h2>Contact</h2>
+<div class="glass">
+Email: vaibhav@email.com <br>
+<a href="https://github.com/yourusername" target="_blank" class="button">GitHub</a>
+<a href="https://linkedin.com/in/yourprofile" target="_blank" class="button">LinkedIn</a>
+</div>
+</section>
+
+<footer>© 2026 Vaibhav Sharma | XR Developer</footer>
 
 <script>
 new Typed("#typed",{
 strings:[
 "XR Developer",
-"VR Education Specialist",
-"Mixed Reality Simulation Expert",
-"Blender + Level Designer",
-"Debugging & Coding Challenge Enthusiast"
+"VR Education Architect",
+"Mixed Reality Engineer",
+"Team Lead & Debugging Specialist"
 ],
 typeSpeed:60,
 backSpeed:30,
@@ -253,38 +264,12 @@ loop:true
 });
 
 ScrollReveal().reveal('.glass',{interval:200});
-ScrollReveal().reveal('.section h2',{origin:'left',distance:'50px'});
 
-// Particle Background
-const canvas=document.getElementById("bg");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-let particles=[];
-for(let i=0;i<100;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2,
-dx:(Math.random()-0.5),
-dy:(Math.random()-0.5)
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",(e)=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
 });
-}
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-particles.forEach(p=>{
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fillStyle="#00f0ff";
-ctx.fill();
-p.x+=p.dx;
-p.y+=p.dy;
-if(p.x<0||p.x>canvas.width)p.dx*=-1;
-if(p.y<0||p.y>canvas.height)p.dy*=-1;
-});
-requestAnimationFrame(animate);
-}
-animate();
 </script>
 
 </body>
