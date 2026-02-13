@@ -3,296 +3,288 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Name | Unity XR Developer</title>
+<title>Vaibhav Sharma | XR Developer</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
 <script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
 <style>
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  scroll-behavior:smooth;
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
-  font-family:'Inter',sans-serif;
-  background:linear-gradient(-45deg,#0d0d0d,#111,#0f2027,#0d0d0d);
-  background-size:400% 400%;
-  animation:gradientMove 15s ease infinite;
-  color:#fff;
+font-family:'Inter',sans-serif;
+background:#0a0a0f;
+color:#fff;
+overflow-x:hidden;
 }
 
-@keyframes gradientMove{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
 }
 
 nav{
-  position:fixed;
-  width:100%;
-  padding:20px 10%;
-  display:flex;
-  justify-content:space-between;
-  background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(10px);
-  z-index:1000;
+position:fixed;
+width:100%;
+padding:20px 10%;
+display:flex;
+justify-content:space-between;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(15px);
+z-index:1000;
 }
 
 nav a{
-  color:#fff;
-  text-decoration:none;
-  margin-left:25px;
-  font-weight:500;
-  transition:0.3s;
+color:#fff;
+text-decoration:none;
+margin-left:25px;
+font-weight:500;
+transition:0.3s;
 }
 
 nav a:hover{
-  color:#00d9ff;
+color:#00f0ff;
 }
 
 .hero{
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:0 20px;
-}
-
-.hero-content{
-  max-width:700px;
-}
-
-.profile-img{
-  width:160px;
-  height:160px;
-  border-radius:50%;
-  border:3px solid #00d9ff;
-  box-shadow:0 0 40px rgba(0,217,255,0.4);
-  margin-bottom:30px;
-  transition:0.4s;
-}
-
-.profile-img:hover{
-  transform:scale(1.08);
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 20px;
 }
 
 .hero h1{
-  font-size:3rem;
-  font-weight:800;
+font-size:3.5rem;
+font-weight:800;
+background:linear-gradient(90deg,#00f0ff,#ff00d4);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.hero span{
-  color:#00d9ff;
-}
-
-.hero p{
-  margin-top:15px;
-  font-size:1.2rem;
-  color:#aaa;
-}
-
-.btn{
-  margin-top:30px;
-  display:inline-block;
-  padding:14px 35px;
-  background:#00d9ff;
-  color:#000;
-  font-weight:600;
-  border-radius:8px;
-  text-decoration:none;
-  transition:0.3s;
-}
-
-.btn:hover{
-  background:#00b8d4;
-  transform:translateY(-5px);
+.hero h2{
+margin-top:15px;
+font-weight:500;
+color:#aaa;
 }
 
 .section{
-  padding:100px 10%;
+padding:120px 10%;
 }
 
 .section h2{
-  font-size:2.2rem;
-  margin-bottom:40px;
+font-size:2.5rem;
+margin-bottom:50px;
+text-align:center;
 }
 
-.about p{
-  color:#bbb;
-  max-width:800px;
-  line-height:1.6;
+.glass{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:15px;
+padding:30px;
+transition:0.5s;
 }
 
-.skills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:15px;
+.glass:hover{
+transform:translateY(-10px);
+border-color:#00f0ff;
+box-shadow:0 0 30px rgba(0,240,255,0.3);
 }
 
-.skills span{
-  background:#1a1a1a;
-  padding:10px 20px;
-  border-radius:20px;
-  border:1px solid #333;
-  transition:0.3s;
+.skills-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
 }
 
-.skills span:hover{
-  border-color:#00d9ff;
-  transform:translateY(-5px);
+.skill-box{
+text-align:center;
+padding:30px;
 }
 
 .projects{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
 }
 
-.card{
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(8px);
-  border-radius:12px;
-  padding:20px;
-  transition:0.4s;
-  border:1px solid #222;
+.project-card img{
+width:100%;
+border-radius:10px;
+margin-bottom:15px;
 }
 
-.card:hover{
-  transform:translateY(-10px);
-  border-color:#00d9ff;
+.project-card h3{
+margin-bottom:10px;
 }
 
-.project-img{
-  width:100%;
-  border-radius:8px;
-  margin-bottom:15px;
+.project-card p{
+color:#bbb;
 }
 
-.card h3{
-  margin-bottom:10px;
-}
-
-.card p{
-  color:#aaa;
-  margin-bottom:15px;
-}
-
-.card a{
-  text-decoration:none;
-  color:#00d9ff;
-  font-weight:600;
-}
-
-.contact p{
-  margin-bottom:15px;
-  color:#bbb;
+.contact{
+text-align:center;
 }
 
 .contact a{
-  color:#00d9ff;
-  text-decoration:none;
+color:#00f0ff;
+text-decoration:none;
+display:block;
+margin-top:10px;
 }
 
 footer{
-  text-align:center;
-  padding:40px;
-  color:#666;
+text-align:center;
+padding:40px;
+color:#666;
 }
 </style>
 </head>
 
 <body>
 
+<canvas id="bg"></canvas>
+
 <nav>
-  <div><strong>YourName.dev</strong></div>
-  <div>
-    <a href="#about">About</a>
-    <a href="#skills">Tech</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
+<div><strong>Vaibhav.dev</strong></div>
+<div>
+<a href="#about">About</a>
+<a href="#skills">Expertise</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
 </nav>
 
 <section class="hero">
-  <div class="hero-content">
-    <img src="profile.jpg" alt="Profile" class="profile-img">
-    <h1>Hi, I'm <span>Your Name</span></h1>
-    <p>Unity Developer | XR | Backend | 2+ Years Experience</p>
-    <a href="resume.pdf" class="btn">Download Resume</a>
-  </div>
+<div>
+<h1>Vaibhav Sharma</h1>
+<h2><span id="typed"></span></h2>
+</div>
 </section>
 
-<section id="about" class="section about">
-  <h2>About Me</h2>
-  <p>
-    Unity Developer with 2+ years of experience building VR, AR, MR applications 
-    and backend-integrated systems. Experienced in scalable architecture, 
-    ScriptableObjects, Addressables, optimization, and clean code practices.
-  </p>
+<section id="about" class="section">
+<h2>About Me</h2>
+<div class="glass">
+<p>
+XR Developer with 2+ years of experience crafting immersive VR educational content 
+and Mixed Reality simulations. Passionate about building scalable interactive systems 
+with clean architecture and performance optimization.
+
+Hands-on expertise in Blender, Level Design, debugging complex systems, and solving 
+coding challenges with logical precision.
+</p>
+</div>
 </section>
 
 <section id="skills" class="section">
-  <h2>Tech Stack</h2>
-  <div class="skills">
-    <span>Unity</span>
-    <span>C#</span>
-    <span>XR Toolkit</span>
-    <span>Addressables</span>
-    <span>Firebase</span>
-    <span>REST APIs</span>
-    <span>Node.js</span>
-    <span>Git</span>
-  </div>
+<h2>Core Expertise</h2>
+<div class="skills-grid">
+<div class="glass skill-box">VR Educational Experiences</div>
+<div class="glass skill-box">Mixed Reality Simulation</div>
+<div class="glass skill-box">Unity + XR Toolkit</div>
+<div class="glass skill-box">Blender 3D Modeling</div>
+<div class="glass skill-box">Level Design</div>
+<div class="glass skill-box">Advanced Debugging</div>
+<div class="glass skill-box">Performance Optimization</div>
+<div class="glass skill-box">System Architecture</div>
+</div>
 </section>
 
 <section id="projects" class="section">
-  <h2>Featured Projects</h2>
-  <div class="projects">
+<h2>Featured Projects</h2>
+<div class="projects">
 
-    <div class="card">
-      <img src="project1.jpg" class="project-img">
-      <h3>XR Interaction Framework</h3>
-      <p>Modular VR interaction system with ScriptableObjects and optimized rendering pipeline.</p>
-      <a href="#">View Project →</a>
-    </div>
+<div class="glass project-card">
+<img src="project1.jpg">
+<h3>Immersive VR Education Platform</h3>
+<p>Interactive science and financial literacy simulations designed for deep conceptual understanding in VR.</p>
+</div>
 
-    <div class="card">
-      <img src="project2.jpg" class="project-img">
-      <h3>Backend Integrated App</h3>
-      <p>Authentication, cloud save, leaderboard, and real-time sync using backend APIs.</p>
-      <a href="#">View Project →</a>
-    </div>
+<div class="glass project-card">
+<img src="project2.jpg">
+<h3>Mixed Reality Industrial Simulation</h3>
+<p>Real-time MR simulation for training and visualization with optimized interaction systems.</p>
+</div>
 
-    <div class="card">
-      <img src="project3.jpg" class="project-img">
-      <h3>Performance Optimization Demo</h3>
-      <p>Live comparison of object pooling vs instantiation with FPS monitoring tools.</p>
-      <a href="#">View Project →</a>
-    </div>
+<div class="glass project-card">
+<img src="project3.jpg">
+<h3>XR Performance Optimization Toolkit</h3>
+<p>Debugging tools, memory tracking, and FPS optimization framework for scalable XR projects.</p>
+</div>
 
-  </div>
+</div>
 </section>
 
 <section id="contact" class="section contact">
-  <h2>Contact</h2>
-  <p>Email: yourrealemail@gmail.com</p>
-  <p>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
-  <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+<h2>Let's Build the Future</h2>
+<p>Email: vaibhav@email.com</p>
+<a href="#">GitHub</a>
+<a href="#">LinkedIn</a>
 </section>
 
 <footer>
-  © 2026 Your Name | Built with GitHub Pages
+© 2026 Vaibhav Sharma | XR Developer
 </footer>
 
 <script>
-ScrollReveal().reveal('.hero',{delay:200,distance:'50px',origin:'bottom'});
-ScrollReveal().reveal('.section h2',{delay:200,origin:'left',distance:'30px'});
-ScrollReveal().reveal('.card',{interval:200});
-ScrollReveal().reveal('.skills span',{interval:100});
+new Typed("#typed",{
+strings:[
+"XR Developer",
+"VR Education Specialist",
+"Mixed Reality Simulation Expert",
+"Blender + Level Designer",
+"Debugging & Coding Challenge Enthusiast"
+],
+typeSpeed:60,
+backSpeed:30,
+loop:true
+});
+
+ScrollReveal().reveal('.glass',{interval:200});
+ScrollReveal().reveal('.section h2',{origin:'left',distance:'50px'});
+
+// Particle Background
+const canvas=document.getElementById("bg");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+let particles=[];
+for(let i=0;i<100;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+dx:(Math.random()-0.5),
+dy:(Math.random()-0.5)
+});
+}
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle="#00f0ff";
+ctx.fill();
+p.x+=p.dx;
+p.y+=p.dy;
+if(p.x<0||p.x>canvas.width)p.dx*=-1;
+if(p.y<0||p.y>canvas.height)p.dy*=-1;
+});
+requestAnimationFrame(animate);
+}
+animate();
 </script>
 
 </body>
