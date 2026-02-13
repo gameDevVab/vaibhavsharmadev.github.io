@@ -3,38 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vaibhav Sharma | XR Developer</title>
+<title>Vaibhav Sharma | XR Command Interface</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
+background:#050510;
+color:white;
 font-family:'Inter',sans-serif;
-background:linear-gradient(135deg,#0a0a12,#111827);
-color:#fff;
+overflow-x:hidden;
+cursor:none;
 }
 
-/* NAVBAR */
+/* Animated Grid Background */
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:
+linear-gradient(#0ff2 1px, transparent 1px),
+linear-gradient(90deg,#0ff2 1px, transparent 1px);
+background-size:60px 60px;
+z-index:-1;
+animation:gridMove 20s linear infinite;
+}
+
+@keyframes gridMove{
+0%{background-position:0 0}
+100%{background-position:60px 60px}
+}
+
+/* Custom Cursor */
+.cursor{
+width:20px;height:20px;
+border:2px solid #00f0ff;
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+transform:translate(-50%,-50%);
+transition:0.1s;
+z-index:9999;
+}
+
+/* Navbar */
 nav{
 position:fixed;
 width:100%;
 padding:20px 8%;
 display:flex;
 justify-content:space-between;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(15px);
 z-index:1000;
+font-family:'Orbitron',sans-serif;
 }
 
 nav a{
-color:#fff;
+color:white;
 text-decoration:none;
 margin-left:25px;
 transition:0.3s;
@@ -44,236 +76,183 @@ nav a:hover{
 color:#00f0ff;
 }
 
-/* HERO */
+/* Hero */
 .hero{
 height:100vh;
 display:flex;
-justify-content:center;
+flex-direction:column;
 align-items:center;
+justify-content:center;
 text-align:center;
-padding:0 20px;
 }
 
 .profile-img{
-width:180px;
-height:180px;
+width:200px;
+height:200px;
 border-radius:50%;
 object-fit:cover;
-border:3px solid #00f0ff;
-box-shadow:0 0 40px rgba(0,240,255,0.4);
+border:4px solid #00f0ff;
+box-shadow:0 0 50px #00f0ff;
 margin-bottom:25px;
 transition:0.4s;
 }
 
 .profile-img:hover{
-transform:scale(1.05);
+transform:scale(1.08) rotate(2deg);
+box-shadow:0 0 80px #00f0ff;
 }
 
 .hero h1{
-font-size:3rem;
-font-weight:800;
+font-size:4rem;
+font-family:'Orbitron',sans-serif;
+background:linear-gradient(90deg,#00f0ff,#ff00c8);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-.hero h2{
-margin-top:10px;
-font-weight:400;
-color:#aaa;
-}
-
-.hero-bio{
-margin-top:15px;
-max-width:600px;
-margin-left:auto;
-margin-right:auto;
-color:#bbb;
-line-height:1.6;
-}
-
-.btn{
-display:inline-block;
-margin-top:20px;
-padding:10px 25px;
-border:1px solid #00f0ff;
-border-radius:30px;
-text-decoration:none;
-color:#00f0ff;
-transition:0.3s;
-}
-
-.btn:hover{
-background:#00f0ff;
-color:#000;
-}
-
-/* SECTION */
 .section{
 padding:120px 8%;
 }
 
 .section h2{
-font-size:2rem;
-margin-bottom:40px;
 text-align:center;
+font-size:2.5rem;
+margin-bottom:50px;
+font-family:'Orbitron',sans-serif;
 }
 
-/* GLASS CARD */
+/* Glass Cards */
 .card{
 background:rgba(255,255,255,0.05);
-backdrop-filter:blur(12px);
-border-radius:15px;
+border:1px solid rgba(0,240,255,0.3);
+border-radius:20px;
 padding:30px;
 margin-bottom:40px;
-border:1px solid rgba(255,255,255,0.1);
-transition:0.4s;
+backdrop-filter:blur(20px);
+transition:0.5s;
 }
 
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 30px rgba(0,240,255,0.3);
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 0 40px rgba(0,240,255,0.5);
 }
 
-/* PROJECT */
+/* Project */
 .project-img{
 width:100%;
-border-radius:10px;
+border-radius:15px;
 margin-bottom:15px;
 }
 
-.project-btn{
+.button{
 display:inline-block;
 margin-top:15px;
 margin-right:10px;
-padding:8px 20px;
+padding:10px 25px;
 border:1px solid #00f0ff;
-border-radius:25px;
-text-decoration:none;
+border-radius:30px;
 color:#00f0ff;
+text-decoration:none;
 transition:0.3s;
 }
 
-.project-btn:hover{
+.button:hover{
 background:#00f0ff;
-color:#000;
+color:black;
 }
 
-/* FOOTER */
 footer{
 text-align:center;
 padding:40px;
-color:#666;
+color:#555;
 }
 </style>
 </head>
 
 <body>
 
+<div class="cursor"></div>
+
 <nav>
-<div><strong>Vaibhav.dev</strong></div>
+<div>Vaibhav.dev</div>
 <div>
 <a href="#about">About</a>
-<a href="#expertise">Expertise</a>
 <a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
 </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-<div>
+
 <img src="profile.jpg" alt="Vaibhav Sharma" class="profile-img">
 
 <h1>Vaibhav Sharma</h1>
 
-<h2>XR Developer | VR Education | Mixed Reality Simulation</h2>
+<h3><span id="typed"></span></h3>
 
-<p class="hero-bio">
-XR Developer with 2+ years of experience building immersive VR educational content,
-Mixed Reality simulations, projector-based interactive systems, and leading development teams.
-Expert in debugging, Blender workflows, and performance optimization.
-</p>
-
-<a href="resume.pdf" class="btn">Download Resume</a>
-</div>
 </section>
 
-<!-- ABOUT -->
 <section id="about" class="section">
-<h2>About Me</h2>
+<h2>XR PROFILE</h2>
 <div class="card">
-Experienced XR Developer with strong foundation in system architecture,
-interactive design, and team leadership. Passionate about solving complex
-debugging challenges and building scalable immersive systems.
+XR Developer with 2+ years experience in VR educational systems,
+Mixed Reality simulations, projector-based interactive installations,
+and team leadership. Passionate about debugging complex systems and
+solving coding challenges.
 </div>
 </section>
 
-<!-- EXPERTISE -->
-<section id="expertise" class="section">
-<h2>Core Expertise</h2>
-
-<div class="card">VR Educational Experiences</div>
-<div class="card">Mixed Reality Simulations</div>
-<div class="card">Projector-Based Interactive Systems</div>
-<div class="card">Blender & Level Design</div>
-<div class="card">Advanced Debugging</div>
-<div class="card">Team Leadership</div>
-
-</section>
-
-<!-- PROJECTS -->
 <section id="projects" class="section">
-<h2>Featured Projects</h2>
+<h2>PROJECT DATABASE</h2>
 
 <div class="card">
 
-<img src="project1.jpg" alt="VR Project" class="project-img">
+<img src="assets/project1.jpg" class="project-img">
 
-<h3>Immersive VR Education Platform</h3>
+<h3>VR Learning Universe</h3>
 
-<p>
-Built an interactive VR learning experience focused on conceptual clarity.
-Optimized performance from 50 FPS to stable 90 FPS.
-</p>
+<p>Immersive VR learning modules built with optimized XR architecture.</p>
 
-<p><strong>Tech Used:</strong> Unity, XR Toolkit, Blender, Firebase</p>
-<p><strong>Role:</strong> Team Lead & XR Developer</p>
+<a href="https://github.com/yourusername/project1" target="_blank" class="button">GitHub</a>
 
-<a href="https://github.com/yourusername/project1" target="_blank" class="project-btn">
-View GitHub Code
-</a>
-
-</div>
-
-<!-- Embedded Video -->
-<div class="card">
-<h3>Project Demo Video</h3>
-
-<iframe width="100%" height="400"
-src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-frameborder="0"
-allowfullscreen>
-</iframe>
+<a href="https://youtu.be/yourvideo" target="_blank" class="button">Demo Video</a>
 
 </div>
 
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="section">
-<h2>Contact</h2>
-
+<h2>CONNECT</h2>
 <div class="card">
 Email: yourmail@email.com <br><br>
-
-<a href="https://github.com/yourusername" target="_blank" class="project-btn">GitHub</a>
-
-<a href="https://linkedin.com/in/yourprofile" target="_blank" class="project-btn">LinkedIn</a>
+<a href="https://github.com/yourusername" class="button">GitHub</a>
+<a href="https://linkedin.com/in/yourprofile" class="button">LinkedIn</a>
 </div>
-
 </section>
 
-<footer>
-© 2026 Vaibhav Sharma | XR Developer
-</footer>
+<footer>© 2026 Vaibhav Sharma | XR Developer</footer>
+
+<script>
+new Typed("#typed",{
+strings:[
+"XR Developer",
+"VR Education Specialist",
+"Mixed Reality Engineer",
+"Team Lead & Debugging Expert"
+],
+typeSpeed:60,
+backSpeed:30,
+loop:true
+});
+
+ScrollReveal().reveal('.card',{interval:200});
+
+const cursor=document.querySelector(".cursor");
+document.addEventListener("mousemove",(e)=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+});
+</script>
 
 </body>
 </html>
