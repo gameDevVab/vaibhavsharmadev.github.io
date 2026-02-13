@@ -3,55 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vaibhav Sharma | XR Engineer</title>
+<title>Vaibhav Sharma | XR Systems Architect</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{overflow-x:hidden;}
 body{
 font-family:'Space Grotesk',sans-serif;
-background:radial-gradient(circle at 20% 20%,#141622,#0d0f17 40%,#090b11 100%);
+background:radial-gradient(circle at 30% 20%,#1a1d2b,#0d0f17 50%,#080a12 100%);
 color:white;
-overflow-x:hidden;
-}
-
-/* PAGE FADE IN */
-body{
-opacity:0;
-animation:fadeInPage 1.2s ease forwards;
-}
-@keyframes fadeInPage{
-to{opacity:1;}
-}
-
-/* LOADER */
-.loader{
-position:fixed;
-inset:0;
-background:#0d0f17;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:9999;
-transition:opacity 0.8s ease;
-}
-.loader span{
-letter-spacing:4px;
-opacity:0.6;
-}
-body.loaded .loader{
-opacity:0;
-pointer-events:none;
 }
 
 /* NAV */
@@ -61,167 +26,125 @@ width:100%;
 padding:25px 8%;
 display:flex;
 justify-content:space-between;
-background:rgba(10,12,18,0.6);
-backdrop-filter:blur(20px);
 z-index:1000;
-transition:0.4s;
-}
-nav.scrolled{
-background:rgba(10,12,18,0.95);
+mix-blend-mode:difference;
 }
 nav a{
-color:#aaa;
+color:white;
 margin-left:30px;
 text-decoration:none;
-transition:0.3s;
-}
-nav a:hover{
-color:white;
+font-size:14px;
 }
 
 /* HERO */
 .hero{
-min-height:100vh;
+height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
 padding:0 8%;
-position:relative;
 }
-
 .hero-container{
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:80px;
-max-width:1300px;
+max-width:1400px;
 width:100%;
 }
-
-/* PROFILE */
-.profile-card{
-background:rgba(255,255,255,0.04);
-backdrop-filter:blur(25px);
-padding:30px;
-border-radius:25px;
-width:340px;
-transition:0.6s;
-transform-style:preserve-3d;
-box-shadow:0 40px 80px rgba(0,0,0,0.6);
-}
-.profile-card:hover{
-transform:rotateY(8deg) rotateX(4deg);
-}
-.profile-card img{
-width:100%;
-border-radius:18px;
-margin-bottom:20px;
-}
-
-/* HERO TEXT */
 .hero-text h1{
-font-size:4rem;
-line-height:1.1;
+font-size:6rem;
+line-height:0.95;
+overflow:hidden;
 }
 .hero-text h1 span{
-color:#555;
+display:block;
+color:#444;
 }
 .hero-text p{
-margin-top:20px;
+margin-top:30px;
 color:#aaa;
-max-width:600px;
-line-height:1.7;
+max-width:500px;
+line-height:1.6;
+}
+.profile-img{
+width:400px;
+border-radius:40px;
+box-shadow:0 60px 120px rgba(0,0,0,0.6);
 }
 
-/* MAGNETIC BUTTON */
-.btn{
-display:inline-block;
-margin-top:25px;
-padding:12px 28px;
-border-radius:30px;
-border:1px solid rgba(255,255,255,0.2);
-color:white;
-text-decoration:none;
-transition:0.4s;
+/* STORY SECTION (PINNED) */
+.story{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:0 8%;
+}
+.story h2{
+font-size:4rem;
+max-width:800px;
+text-align:center;
+}
+
+/* HORIZONTAL PROJECTS */
+.projects-section{
+height:100vh;
 position:relative;
 overflow:hidden;
+}
+.projects-wrapper{
+display:flex;
+height:100%;
+}
+.project{
+min-width:100vw;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:80px;
+padding:0 8%;
+}
+.project img{
+width:500px;
+border-radius:30px;
+}
+.project-content{
+max-width:500px;
+}
+.project-content h3{
+font-size:2.5rem;
+margin-bottom:20px;
+}
+.project-content p{
+color:#bbb;
+margin-bottom:20px;
+}
+.btn{
+padding:10px 25px;
+border:1px solid rgba(255,255,255,0.3);
+border-radius:40px;
+color:white;
+text-decoration:none;
+transition:0.3s;
 }
 .btn:hover{
 background:white;
 color:black;
-transform:translateY(-4px);
-}
-
-/* SECTION */
-.section{
-padding:160px 8%;
-max-width:1200px;
-margin:auto;
-opacity:0;
-transform:translateY(60px);
-transition:all 1s ease;
-}
-.section.show{
-opacity:1;
-transform:translateY(0);
-}
-.section h2{
-font-size:3rem;
-margin-bottom:60px;
-}
-
-/* PROJECT */
-.project{
-display:flex;
-gap:60px;
-align-items:center;
-margin-bottom:140px;
-}
-.project img{
-width:50%;
-border-radius:25px;
-transition:0.6s;
-}
-.project img:hover{
-transform:scale(1.05);
-}
-.project-content{
-flex:1;
-}
-.project-content p{
-color:#bbb;
-margin-bottom:25px;
 }
 
 /* FOOTER */
 footer{
-padding:100px 8%;
+padding:120px 8%;
 text-align:center;
 color:#666;
-}
-
-/* CURSOR */
-.cursor{
-width:20px;
-height:20px;
-border:2px solid white;
-border-radius:50%;
-position:fixed;
-pointer-events:none;
-transform:translate(-50%,-50%);
-transition:0.15s;
-z-index:9999;
 }
 </style>
 </head>
 
 <body>
 
-<div class="loader"><span>INITIALIZING EXPERIENCE</span></div>
-<div class="cursor"></div>
-
-<nav id="navbar">
-<div><strong>Vaibhav Sharma</strong></div>
+<nav>
+<div>Vaibhav Sharma</div>
 <div>
 <a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
@@ -230,74 +153,103 @@ z-index:9999;
 
 <section class="hero">
 <div class="hero-container">
-
-<div class="profile-card">
-<img src="profile.jpg" alt="Vaibhav Sharma">
-<h3>XR Engineer</h3>
-<p>VR Education • MR Simulation • Team Lead • Debugging Specialist</p>
-</div>
-
 <div class="hero-text">
-<h1>IMMERSIVE <br><span>SYSTEM ARCHITECT</span></h1>
+<h1>
+IMMERSIVE
+<span>SYSTEMS</span>
+ARCHITECT
+</h1>
 <p>
-Designing high-performance XR systems with cinematic precision,
-technical clarity, and scalable architecture.
+XR Developer building high-performance VR educational systems and Mixed Reality simulations with architectural precision.
 </p>
+<br>
 <a href="resume.pdf" class="btn">Download Resume</a>
 </div>
-
+<img src="profile.jpg" class="profile-img">
 </div>
 </section>
 
-<section id="projects" class="section">
-<h2>Selected Projects</h2>
+<section class="story">
+<h2>
+From concept to immersive reality —
+engineering performance-driven XR experiences.
+</h2>
+</section>
+
+<section class="projects-section" id="projects">
+<div class="projects-wrapper">
 
 <div class="project">
 <img src="assets/project1.jpg">
 <div class="project-content">
 <h3>VR Learning Universe</h3>
-<p>High-performance immersive education platform optimized to stable 90 FPS.</p>
+<p>High-performance immersive education platform achieving stable 90 FPS.</p>
 <a href="https://github.com/yourusername/project1" target="_blank" class="btn">GitHub</a>
 <a href="https://youtu.be/YOUR_VIDEO_ID" target="_blank" class="btn">YouTube</a>
 </div>
 </div>
 
+<div class="project">
+<img src="assets/project2.jpg">
+<div class="project-content">
+<h3>MR Simulation Lab</h3>
+<p>Industrial-grade mixed reality training simulation.</p>
+<a href="#" class="btn">GitHub</a>
+<a href="#" class="btn">YouTube</a>
+</div>
+</div>
+
+</div>
 </section>
 
-<section id="contact" class="section">
-<h2>Contact</h2>
-<p>Email: yourmail@email.com</p>
-<p>GitHub: https://github.com/yourusername</p>
-</section>
-
-<footer>
-© 2026 Vaibhav Sharma | XR Engineer
+<footer id="contact">
+Let’s build the future of immersive systems.
 </footer>
 
 <script>
-window.addEventListener("load",()=>{
-document.body.classList.add("loaded");
+gsap.registerPlugin(ScrollTrigger);
+
+/* HERO TEXT SPLIT ANIMATION */
+gsap.from(".hero-text h1",{
+y:150,
+opacity:0,
+duration:1.5,
+ease:"power4.out"
 });
 
-const sections=document.querySelectorAll(".section");
-window.addEventListener("scroll",()=>{
-sections.forEach(sec=>{
-if(sec.getBoundingClientRect().top < window.innerHeight*0.8){
-sec.classList.add("show");
+gsap.from(".profile-img",{
+x:200,
+opacity:0,
+duration:1.5,
+delay:0.3,
+ease:"power4.out"
+});
+
+/* STORY PINNED FADE */
+gsap.from(".story h2",{
+opacity:0,
+y:100,
+scrollTrigger:{
+trigger:".story",
+start:"top center",
+end:"bottom center",
+scrub:true
 }
 });
-});
 
-window.addEventListener("scroll",function(){
-document.getElementById("navbar")
-.classList.toggle("scrolled",window.scrollY>50);
-});
+/* HORIZONTAL SCROLL */
+const projectsWrapper=document.querySelector(".projects-wrapper");
 
-/* CURSOR */
-const cursor=document.querySelector(".cursor");
-document.addEventListener("mousemove",e=>{
-cursor.style.left=e.clientX+"px";
-cursor.style.top=e.clientY+"px";
+gsap.to(projectsWrapper,{
+xPercent:-100,
+ease:"none",
+scrollTrigger:{
+trigger:".projects-section",
+start:"top top",
+end:"+=2000",
+scrub:1,
+pin:true
+}
 });
 </script>
 
