@@ -20,6 +20,17 @@ overflow-x:hidden;
 cursor:none;
 }
 
+/* Scroll Progress */
+#progress{
+position:fixed;
+top:0;
+left:0;
+height:3px;
+background:#00f0ff;
+width:0%;
+z-index:3000;
+}
+
 /* ThreeJS Canvas */
 #bg3d{
 position:fixed;
@@ -28,7 +39,6 @@ left:0;
 z-index:-1;
 }
 
-/* Custom Cursor */
 .cursor{
 width:15px;height:15px;
 border:2px solid #00f0ff;
@@ -40,7 +50,6 @@ transition:0.1s ease;
 z-index:9999;
 }
 
-/* Loader */
 .loader{
 position:fixed;
 width:100%;
@@ -54,10 +63,7 @@ font-size:2rem;
 letter-spacing:3px;
 animation:fadeOut 2s 2s forwards;
 }
-
-@keyframes fadeOut{
-to{opacity:0;visibility:hidden;}
-}
+@keyframes fadeOut{to{opacity:0;visibility:hidden;}}
 
 nav{
 position:fixed;
@@ -69,14 +75,12 @@ background:rgba(0,0,0,0.6);
 backdrop-filter:blur(10px);
 z-index:1000;
 }
-
 nav a{
 color:#fff;
 text-decoration:none;
 margin-left:25px;
 transition:0.3s;
 }
-
 nav a:hover{color:#00f0ff;}
 
 .hero{
@@ -87,7 +91,6 @@ align-items:center;
 justify-content:center;
 text-align:center;
 }
-
 .hero h1{
 font-size:4rem;
 font-weight:800;
@@ -96,10 +99,7 @@ background:linear-gradient(90deg,#00f0ff,#ff00c8);
 -webkit-text-fill-color:transparent;
 }
 
-.section{
-padding:120px 8%;
-}
-
+.section{padding:120px 8%;}
 .section h2{
 font-size:2.5rem;
 margin-bottom:50px;
@@ -114,7 +114,6 @@ border-radius:20px;
 padding:30px;
 transition:0.5s;
 }
-
 .glass:hover{
 transform:rotateX(5deg) rotateY(5deg);
 box-shadow:0 0 40px rgba(0,240,255,0.4);
@@ -142,7 +141,6 @@ color:#00f0ff;
 text-decoration:none;
 transition:0.3s;
 }
-
 .button:hover{
 background:#00f0ff;
 color:#000;
@@ -155,7 +153,6 @@ flex-wrap:wrap;
 gap:20px;
 text-align:center;
 }
-
 .stat h3{
 font-size:3rem;
 color:#00f0ff;
@@ -171,6 +168,7 @@ color:#555;
 
 <body>
 
+<div id="progress"></div>
 <canvas id="bg3d"></canvas>
 
 <div class="loader">INITIALIZING XR SYSTEM...</div>
@@ -223,22 +221,22 @@ and interactive system design.
 <div class="glass project-card">
 <img src="assets/project1.jpg">
 <h3>VR Learning Universe</h3>
-<p>Immersive educational VR modules with optimized interaction systems.</p>
-<a href="https://github.com/yourusername/project1" target="_blank" class="button">View Code</a>
+<p>Built immersive VR science modules optimized for stable 72 FPS on standalone headsets.</p>
+<a href="https://github.com/gameDevVab" target="_blank" class="button">View Code</a>
 </div>
 
 <div class="glass project-card">
 <img src="assets/project2.jpg">
 <h3>MR Simulation Lab</h3>
-<p>Real-time mixed reality industrial training simulation.</p>
-<a href="https://github.com/yourusername/project2" target="_blank" class="button">View Code</a>
+<p>Developed real-time mixed reality industrial training simulations using Unity XR toolkit.</p>
+<a href="https://github.com/gameDevVab" target="_blank" class="button">View Code</a>
 </div>
 
 <div class="glass project-card">
 <img src="assets/project3.jpg">
 <h3>Interactive Projector Experience</h3>
-<p>Large scale projection-based interactive learning system.</p>
-<a href="https://github.com/yourusername/project3" target="_blank" class="button">View Code</a>
+<p>Engineered projection-based large-scale interactive educational installations.</p>
+<a href="https://github.com/gameDevVab" target="_blank" class="button">View Code</a>
 </div>
 
 </div>
@@ -256,14 +254,12 @@ and interactive system design.
 <section id="contact" class="section">
 <h2>Contact</h2>
 <div class="glass">
-<p><strong>Email:</strong> vaibhav@email.com</p>
+<p><strong>Email:</strong> vaibhavsharmadev31@gmail.com</p>
 <p><strong>Location:</strong> India</p>
 <p><strong>Availability:</strong> Open to XR / VR / MR Projects</p>
-
 <br>
-
-<a href="https://github.com/yourusername" target="_blank" class="button">GitHub</a>
-<a href="https://linkedin.com/in/yourprofile" target="_blank" class="button">LinkedIn</a>
+<a href="https://github.com/gameDevVab" target="_blank" class="button">GitHub</a>
+<a href="https://www.linkedin.com/in/vaibhav-sharma-a597b5267" target="_blank" class="button">LinkedIn</a>
 <a href="resume.pdf" target="_blank" class="button">Download Resume</a>
 </div>
 </section>
@@ -271,6 +267,8 @@ and interactive system design.
 <footer>© 2026 Vaibhav Sharma | XR Developer</footer>
 
 <script>
+
+/* Typed */
 new Typed("#typed",{
 strings:[
 "XR Developer",
@@ -283,6 +281,7 @@ backSpeed:30,
 loop:true
 });
 
+/* Scroll Reveal */
 ScrollReveal().reveal('.glass',{interval:200});
 
 /* Custom Cursor */
@@ -292,7 +291,32 @@ cursor.style.left=e.clientX+"px";
 cursor.style.top=e.clientY+"px";
 });
 
-/* Increment Counter */
+/* Scroll Progress */
+window.addEventListener("scroll",()=>{
+const scrollTop=document.documentElement.scrollTop;
+const height=document.documentElement.scrollHeight - document.documentElement.clientHeight;
+const scrolled=(scrollTop/height)*100;
+document.getElementById("progress").style.width=scrolled+"%";
+});
+
+/* Project Card Tilt */
+document.querySelectorAll(".project-card").forEach(card=>{
+card.addEventListener("mousemove",(e)=>{
+const rect=card.getBoundingClientRect();
+const x=e.clientX-rect.left;
+const y=e.clientY-rect.top;
+const centerX=rect.width/2;
+const centerY=rect.height/2;
+const rotateX=-(y-centerY)/20;
+const rotateY=(x-centerX)/20;
+card.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+});
+card.addEventListener("mouseleave",()=>{
+card.style.transform="rotateX(0) rotateY(0)";
+});
+});
+
+/* Counter */
 const counters=document.querySelectorAll(".counter");
 let counterStarted=false;
 window.addEventListener("scroll",()=>{
@@ -328,12 +352,10 @@ camera.position.z=5;
 const geometry=new THREE.BufferGeometry();
 const count=800;
 const positions=new Float32Array(count*3);
-
 for(let i=0;i<count*3;i++){
 positions[i]=(Math.random()-0.5)*10;
 }
 geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));
-
 const material=new THREE.PointsMaterial({size:0.02,color:0x00f0ff});
 const particles=new THREE.Points(geometry,material);
 scene.add(particles);
