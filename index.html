@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/scrollreveal"></script>
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -20,25 +19,7 @@ overflow-x:hidden;
 cursor:none;
 }
 
-/* Scroll Progress */
-#progress{
-position:fixed;
-top:0;
-left:0;
-height:3px;
-background:#00f0ff;
-width:0%;
-z-index:3000;
-}
-
-/* ThreeJS Canvas */
-#bg3d{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
-}
-
+/* Custom Cursor */
 .cursor{
 width:15px;height:15px;
 border:2px solid #00f0ff;
@@ -50,6 +31,7 @@ transition:0.1s ease;
 z-index:9999;
 }
 
+/* Loader */
 .loader{
 position:fixed;
 width:100%;
@@ -63,7 +45,10 @@ font-size:2rem;
 letter-spacing:3px;
 animation:fadeOut 2s 2s forwards;
 }
-@keyframes fadeOut{to{opacity:0;visibility:hidden;}}
+
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden;}
+}
 
 nav{
 position:fixed;
@@ -75,12 +60,14 @@ background:rgba(0,0,0,0.6);
 backdrop-filter:blur(10px);
 z-index:1000;
 }
+
 nav a{
 color:#fff;
 text-decoration:none;
 margin-left:25px;
 transition:0.3s;
 }
+
 nav a:hover{color:#00f0ff;}
 
 .hero{
@@ -91,6 +78,7 @@ align-items:center;
 justify-content:center;
 text-align:center;
 }
+
 .hero h1{
 font-size:4rem;
 font-weight:800;
@@ -99,7 +87,10 @@ background:linear-gradient(90deg,#00f0ff,#ff00c8);
 -webkit-text-fill-color:transparent;
 }
 
-.section{padding:120px 8%;}
+.section{
+padding:120px 8%;
+}
+
 .section h2{
 font-size:2.5rem;
 margin-bottom:50px;
@@ -114,6 +105,7 @@ border-radius:20px;
 padding:30px;
 transition:0.5s;
 }
+
 .glass:hover{
 transform:rotateX(5deg) rotateY(5deg);
 box-shadow:0 0 40px rgba(0,240,255,0.4);
@@ -130,48 +122,6 @@ width:100%;
 border-radius:12px;
 margin-bottom:15px;
 }
-  .video-thumbnail{
-position:relative;
-width:100%;
-border-radius:12px;
-overflow:hidden;
-margin-bottom:15px;
-cursor:pointer;
-transition:0.3s ease;
-}
-
-.video-thumbnail img{
-width:100%;
-display:block;
-border-radius:12px;
-}
-
-.video-thumbnail .play-button{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:80px;
-height:80px;
-background:rgba(255,0,0,0.9);
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-box-shadow:0 0 25px rgba(0,0,0,0.6);
-}
-
-.video-thumbnail .play-button::before{
-content:'';
-border-left:25px solid white;
-border-top:15px solid transparent;
-border-bottom:15px solid transparent;
-margin-left:5px;
-}
-
-.video-thumbnail:hover{
-transform:scale(1.04);
-}
 
 .button{
 display:inline-block;
@@ -183,6 +133,7 @@ color:#00f0ff;
 text-decoration:none;
 transition:0.3s;
 }
+
 .button:hover{
 background:#00f0ff;
 color:#000;
@@ -195,6 +146,7 @@ flex-wrap:wrap;
 gap:20px;
 text-align:center;
 }
+
 .stat h3{
 font-size:3rem;
 color:#00f0ff;
@@ -210,9 +162,6 @@ color:#555;
 
 <body>
 
-<div id="progress"></div>
-<canvas id="bg3d"></canvas>
-
 <div class="loader">INITIALIZING XR SYSTEM...</div>
 <div class="cursor"></div>
 
@@ -220,7 +169,6 @@ color:#555;
 <div><strong>Vaibhav.dev</strong></div>
 <div>
 <a href="#about">About</a>
-<a href="#skills">Skills</a>
 <a href="#expertise">Expertise</a>
 <a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
@@ -238,38 +186,7 @@ color:#555;
 XR Developer with 2+ years of experience building immersive VR Educational Content,
 Mixed Reality Simulations, and Projector-based Interactive Systems.
 Experienced Team Lead with strong debugging mindset and passion for coding challenges.
-Hands-on with Blender, Level Design, scalable architecture, performance optimization,
-and interactive system design.
-</div>
-</section>
-
-<section id="skills" class="section">
-<h2>Skills</h2>
-<div class="grid">
-<div class="glass">
-<h3>Game Engine</h3>
-<p>Unity (2D/3D), XR Interaction Toolkit, OpenXR</p>
-</div>
-<div class="glass">
-<h3>Programming</h3>
-<p>C#, Object-Oriented Programming, Event Systems</p>
-</div>
-<div class="glass">
-<h3>XR Development</h3>
-<p>VR Applications, Mixed Reality Systems, Projection Mapping</p>
-</div>
-<div class="glass">
-<h3>Optimization</h3>
-<p>Draw Call Reduction, LOD Groups, Occlusion Culling, Profiling</p>
-</div>
-<div class="glass">
-<h3>3D & Design</h3>
-<p>Blender, Lighting Setup, Level Design</p>
-</div>
-<div class="glass">
-<h3>Version Control</h3>
-<p>Git, GitHub, Project Structuring</p>
-</div>
+Hands-on with Blender, Level Design, and scalable system architecture.
 </div>
 </section>
 
@@ -282,44 +199,33 @@ and interactive system design.
 <div class="glass">Blender & Level Design</div>
 <div class="glass">Advanced Debugging</div>
 <div class="glass">Team Leadership</div>
-<div class="glass">Performance Optimization</div>
-<div class="glass">System Architecture</div>
 </div>
 </section>
 
 <section id="projects" class="section">
 <h2>Projects</h2>
-
-<div class="slider-wrapper">
-
-<button class="slide-btn left">&#10094;</button>
-
-<div class="project-slider">
+<div class="grid">
 
 <div class="glass project-card">
-<img src="assets/project1.jpg">
+<img src="project1.jpg">
 <h3>VR Learning Universe</h3>
-<p>Built immersive VR science modules optimized for stable 72 FPS on standalone headsets.</p>
-<a href="https://github.com/gameDevVab" target="_blank" class="button">View Code</a>
+<p>Immersive educational VR modules with optimized interaction systems.</p>
+<a href="https://github.com/yourusername/project1" target="_blank" class="button">View Code</a>
 </div>
 
 <div class="glass project-card">
-<img src="assets/project2.jpg">
+<img src="project2.jpg">
 <h3>MR Simulation Lab</h3>
-<p>Developed real-time mixed reality industrial training simulations using Unity XR toolkit.</p>
-<a href="https://github.com/gameDevVab" target="_blank" class="button">View Code</a>
+<p>Real-time mixed reality industrial training simulation.</p>
+<a href="https://github.com/yourusername/project2" target="_blank" class="button">View Code</a>
 </div>
 
 <div class="glass project-card">
-<img src="assets/project3.jpg">
+<img src="project3.jpg">
 <h3>Interactive Projector Experience</h3>
-<p>Engineered projection-based large-scale interactive educational installations.</p>
-<a href="https://github.com/gameDevVab" target="_blank" class="button">View Code</a>
+<p>Large scale projection-based interactive learning system.</p>
+<a href="https://github.com/yourusername/project3" target="_blank" class="button">View Code</a>
 </div>
-
-</div>
-
-<button class="slide-btn right">&#10095;</button>
 
 </div>
 </section>
@@ -327,29 +233,24 @@ and interactive system design.
 <section class="section">
 <h2>Experience Stats</h2>
 <div class="stats">
-<div class="stat"><h3 class="counter" data-target="2">0</h3><p>Years XR</p></div>
-<div class="stat"><h3 class="counter" data-target="15">0</h3><p>XR Modules</p></div>
-<div class="stat"><h3 class="counter" data-target="5">0</h3><p>Team Projects</p></div>
+<div class="stat"><h3>2+</h3><p>Years XR</p></div>
+<div class="stat"><h3>15+</h3><p>XR Modules</p></div>
+<div class="stat"><h3>5+</h3><p>Team Projects</p></div>
 </div>
 </section>
 
 <section id="contact" class="section">
 <h2>Contact</h2>
 <div class="glass">
-<p><strong>Email:</strong> vaibhavsharmadev31@gmail.com</p>
-<p><strong>Location:</strong> India</p>
-<br>
-<a href="https://github.com/gameDevVab" target="_blank" class="button">GitHub</a>
-<a href="https://www.linkedin.com/in/vaibhav-sharma-a597b5267" target="_blank" class="button">LinkedIn</a>
-<a href="resume.pdf" target="_blank" class="button">Download Resume</a>
+Email: vaibhav@email.com <br>
+<a href="https://github.com/yourusername" target="_blank" class="button">GitHub</a>
+<a href="https://linkedin.com/in/yourprofile" target="_blank" class="button">LinkedIn</a>
 </div>
 </section>
 
 <footer>© 2026 Vaibhav Sharma | XR Developer</footer>
 
 <script>
-
-/* Typed */
 new Typed("#typed",{
 strings:[
 "XR Developer",
@@ -362,98 +263,13 @@ backSpeed:30,
 loop:true
 });
 
-/* Scroll Reveal */
 ScrollReveal().reveal('.glass',{interval:200});
 
-/* Custom Cursor */
 const cursor=document.querySelector(".cursor");
 document.addEventListener("mousemove",(e)=>{
 cursor.style.left=e.clientX+"px";
 cursor.style.top=e.clientY+"px";
 });
-
-/* Scroll Progress */
-window.addEventListener("scroll",()=>{
-const scrollTop=document.documentElement.scrollTop;
-const height=document.documentElement.scrollHeight - document.documentElement.clientHeight;
-const scrolled=(scrollTop/height)*100;
-document.getElementById("progress").style.width=scrolled+"%";
-});
-
-/* Project Card Tilt */
-document.querySelectorAll(".project-card").forEach(card=>{
-card.addEventListener("mousemove",(e)=>{
-const rect=card.getBoundingClientRect();
-const x=e.clientX-rect.left;
-const y=e.clientY-rect.top;
-const centerX=rect.width/2;
-const centerY=rect.height/2;
-const rotateX=-(y-centerY)/20;
-const rotateY=(x-centerX)/20;
-card.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-});
-card.addEventListener("mouseleave",()=>{
-card.style.transform="rotateX(0) rotateY(0)";
-});
-});
-
-/* Counter */
-const counters=document.querySelectorAll(".counter");
-let counterStarted=false;
-window.addEventListener("scroll",()=>{
-if(counterStarted) return;
-const stats=document.querySelector(".stats");
-if(stats.getBoundingClientRect().top < window.innerHeight){
-counters.forEach(counter=>{
-const target=+counter.getAttribute("data-target");
-let count=0;
-const update=()=>{
-count+=target/60;
-if(count<target){
-counter.innerText=Math.ceil(count);
-requestAnimationFrame(update);
-}else{
-counter.innerText=target+"+";
-}
-};
-update();
-});
-counterStarted=true;
-}
-});
-
-/* ThreeJS Background */
-const canvas=document.getElementById("bg3d");
-const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,1000);
-const renderer=new THREE.WebGLRenderer({canvas,alpha:true});
-renderer.setSize(window.innerWidth,window.innerHeight);
-camera.position.z=5;
-
-const geometry=new THREE.BufferGeometry();
-const count=800;
-const positions=new Float32Array(count*3);
-for(let i=0;i<count*3;i++){
-positions[i]=(Math.random()-0.5)*10;
-}
-geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));
-const material=new THREE.PointsMaterial({size:0.02,color:0x00f0ff});
-const particles=new THREE.Points(geometry,material);
-scene.add(particles);
-
-function animate(){
-requestAnimationFrame(animate);
-particles.rotation.y+=0.0005;
-renderer.render(scene,camera);
-}
-animate();
-
-window.addEventListener("resize",()=>{
-renderer.setSize(window.innerWidth,window.innerHeight);
-camera.aspect=window.innerWidth/window.innerHeight;
-camera.updateProjectionMatrix();
-});
-
 </script>
 
 </body>
