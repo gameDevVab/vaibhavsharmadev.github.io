@@ -20,7 +20,7 @@ overflow-x:hidden;
 cursor:none;
 }
 
-/* Custom Cursor */
+/* Cursor */
 .cursor{
 width:15px;height:15px;
 border:2px solid #00f0ff;
@@ -98,111 +98,100 @@ margin-bottom:50px;
 text-align:center;
 }
 
-.glass{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
-backdrop-filter:blur(15px);
-border-radius:20px;
-padding:30px;
-transition:0.5s;
-}
+/* ===== VIDEO SLIDER ===== */
 
-.glass:hover{
-transform:rotateX(5deg) rotateY(5deg);
-box-shadow:0 0 40px rgba(0,240,255,0.4);
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-}
-
-/* ===== YouTube Video Card ===== */
-
-.video-card{
+.slider-container{
 position:relative;
-overflow:hidden;
-border-radius:12px;
-margin-bottom:15px;
 }
 
-.video-card img{
+.video-slider{
+display:flex;
+overflow-x:auto;
+gap:20px;
+scroll-behavior:smooth;
+padding-bottom:10px;
+}
+
+.video-slider::-webkit-scrollbar{
+display:none;
+}
+
+.video-item{
+min-width:250px;
+flex:0 0 auto;
+position:relative;
+border-radius:15px;
+overflow:hidden;
+cursor:pointer;
+transition:0.3s ease;
+}
+
+.video-item img{
 width:100%;
 display:block;
+border-radius:15px;
 transition:0.4s ease;
 }
 
-.video-card::after{
-content:"";
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-height:40%;
-background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+.video-item:hover img{
+transform:scale(1.05);
 }
 
-.youtube-icon{
+.play-icon{
 position:absolute;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
-width:65px;
-height:65px;
+width:45px;
+height:45px;
 background:#ff0000;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
+box-shadow:0 0 20px rgba(255,0,0,0.6);
 transition:0.3s ease;
-box-shadow:0 0 25px rgba(255,0,0,0.5);
 }
 
-.youtube-icon svg{
-width:28px;
-height:28px;
+.play-icon svg{
+width:18px;
+height:18px;
 fill:white;
-margin-left:4px;
+margin-left:3px;
 }
 
-.video-card:hover img{
-transform:scale(1.05);
-}
-
-.video-card:hover .youtube-icon{
+.video-item:hover .play-icon{
 transform:translate(-50%,-50%) scale(1.1);
 background:#ff1a1a;
 }
 
-.button{
-display:inline-block;
-margin-top:15px;
-padding:10px 25px;
+/* Arrow Buttons */
+
+.arrow{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+width:40px;
+height:40px;
+background:rgba(0,0,0,0.7);
 border:1px solid #00f0ff;
-border-radius:30px;
 color:#00f0ff;
-text-decoration:none;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
 transition:0.3s;
+z-index:10;
 }
 
-.button:hover{
+.arrow:hover{
 background:#00f0ff;
 color:#000;
 }
 
-.stats{
-display:flex;
-justify-content:space-around;
-flex-wrap:wrap;
-gap:20px;
-text-align:center;
-}
-
-.stat h3{
-font-size:3rem;
-color:#00f0ff;
-}
+.arrow-left{left:-20px;}
+.arrow-right{right:-20px;}
 
 footer{
 text-align:center;
@@ -220,10 +209,7 @@ color:#555;
 <nav>
 <div><strong>Vaibhav.dev</strong></div>
 <div>
-<a href="#about">About</a>
-<a href="#expertise">Expertise</a>
 <a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
 </div>
 </nav>
 
@@ -232,71 +218,42 @@ color:#555;
 <h2><span id="typed"></span></h2>
 </section>
 
-<section id="about" class="section">
-<h2>About</h2>
-<div class="glass">
-XR Developer with 2+ years of experience building immersive VR Educational Content,
-Mixed Reality Simulations, and Projector-based Interactive Systems.
-Experienced Team Lead with strong debugging mindset and passion for coding challenges.
-Hands-on with Blender, Level Design, and scalable system architecture.
-</div>
-</section>
-
-<section id="expertise" class="section">
-<h2>Expertise</h2>
-<div class="grid">
-<div class="glass">VR Education Systems</div>
-<div class="glass">Mixed Reality Simulation</div>
-<div class="glass">Projector Based Interactive Setup</div>
-<div class="glass">Blender & Level Design</div>
-<div class="glass">Advanced Debugging</div>
-<div class="glass">Team Leadership</div>
-</div>
-</section>
-
 <section id="projects" class="section">
-<h2>Projects</h2>
-<div class="grid">
+<h2>XR Demo Reels</h2>
 
-<div class="glass project-card">
+<div class="slider-container">
 
-<div class="video-card">
-<a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID" target="_blank">
-<img src="https://img.youtube.com/vi/YOUR_VIDEO_ID/maxresdefault.jpg" alt="Project Demo">
-<div class="youtube-icon">
-<svg viewBox="0 0 24 24">
-<path d="M8 5v14l11-7z"/>
-</svg>
+<div class="arrow arrow-left" onclick="scrollSlider(-300)">&#10094;</div>
+<div class="arrow arrow-right" onclick="scrollSlider(300)">&#10095;</div>
+
+<div class="video-slider" id="videoSlider">
+
+<!-- Duplicate this block for all 15 videos -->
+
+<a href="https://www.youtube.com/watch?v=VIDEO_ID_1" target="_blank" class="video-item">
+<img src="https://img.youtube.com/vi/VIDEO_ID_1/hqdefault.jpg">
+<div class="play-icon">
+<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
 </div>
 </a>
+
+<a href="https://www.youtube.com/watch?v=VIDEO_ID_2" target="_blank" class="video-item">
+<img src="https://img.youtube.com/vi/VIDEO_ID_2/hqdefault.jpg">
+<div class="play-icon">
+<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</div>
+</a>
+
+<a href="https://www.youtube.com/watch?v=VIDEO_ID_3" target="_blank" class="video-item">
+<img src="https://img.youtube.com/vi/VIDEO_ID_3/hqdefault.jpg">
+<div class="play-icon">
+<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</div>
+</a>
+
+</div>
 </div>
 
-<h3>VR Learning Universe (2026)</h3>
-<p>Immersive educational VR modules with optimized interaction systems.</p>
-
-<a href="https://github.com/yourusername/project1" target="_blank" class="button">View Code</a>
-
-</div>
-
-</div>
-</section>
-
-<section class="section">
-<h2>Experience Stats</h2>
-<div class="stats">
-<div class="stat"><h3>2+</h3><p>Years XR</p></div>
-<div class="stat"><h3>15+</h3><p>XR Modules</p></div>
-<div class="stat"><h3>5+</h3><p>Team Projects</p></div>
-</div>
-</section>
-
-<section id="contact" class="section">
-<h2>Contact</h2>
-<div class="glass">
-Email: vaibhav@email.com <br>
-<a href="https://github.com/yourusername" target="_blank" class="button">GitHub</a>
-<a href="https://linkedin.com/in/yourprofile" target="_blank" class="button">LinkedIn</a>
-</div>
 </section>
 
 <footer>© 2026 Vaibhav Sharma | XR Developer</footer>
@@ -307,20 +264,27 @@ strings:[
 "XR Developer",
 "VR Education Architect",
 "Mixed Reality Engineer",
-"Team Lead & Debugging Specialist"
+"Gameplay Systems Specialist"
 ],
 typeSpeed:60,
 backSpeed:30,
 loop:true
 });
 
-ScrollReveal().reveal('.glass',{interval:200});
+ScrollReveal().reveal('.video-item',{interval:150});
 
 const cursor=document.querySelector(".cursor");
 document.addEventListener("mousemove",(e)=>{
 cursor.style.left=e.clientX+"px";
 cursor.style.top=e.clientY+"px";
 });
+
+function scrollSlider(value){
+document.getElementById('videoSlider').scrollBy({
+left:value,
+behavior:'smooth'
+});
+}
 </script>
 
 </body>
