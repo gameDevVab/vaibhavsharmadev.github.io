@@ -20,6 +20,77 @@ overflow-x:hidden;
 cursor:none;
 }
 
+  /* ===== XR PLAY BUTTON ===== */
+
+.xr-play{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:90px;
+height:90px;
+display:flex;
+align-items:center;
+justify-content:center;
+pointer-events:none;
+}
+
+/* Rotating Neon Ring */
+.ring{
+position:absolute;
+width:100%;
+height:100%;
+border-radius:50%;
+border:2px solid rgba(255,0,0,0.4);
+animation:rotateRing 6s linear infinite;
+box-shadow:0 0 25px rgba(255,0,0,0.6);
+}
+
+/* Core Button */
+.core{
+width:60px;
+height:60px;
+background:#ff0000;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 0 25px rgba(255,0,0,0.9);
+animation:pulse 2s infinite;
+transition:0.3s ease;
+}
+
+.core svg{
+width:24px;
+height:24px;
+fill:white;
+margin-left:3px;
+}
+
+/* Hover Effects */
+.video-item:hover .core{
+transform:scale(1.15);
+background:#ff1a1a;
+box-shadow:0 0 40px rgba(255,0,0,1);
+}
+
+.video-item:hover .ring{
+border-color:#ff0000;
+box-shadow:0 0 35px rgba(255,0,0,1);
+}
+
+/* Animations */
+@keyframes pulse{
+0%{box-shadow:0 0 15px rgba(255,0,0,0.7);}
+50%{box-shadow:0 0 35px rgba(255,0,0,1);}
+100%{box-shadow:0 0 15px rgba(255,0,0,0.7);}
+}
+
+@keyframes rotateRing{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
 /* ===== SPACE BACKGROUND ===== */
 #space{
 position:fixed;
@@ -312,7 +383,10 @@ Hands-on with Blender, Level Design, and scalable system architecture.
 <section id="contact" class="section">
 <h2>Contact</h2>
 <div class="glass">
-Email: vaibhavsharmadev31@gmail.com <br><br>
+Email: 
+<a href="mailto:vaibhavsharmadev31@gmail.com" class="button">
+vaibhavsharmadev31@gmail.com
+</a>
 <a href="https://github.com/GameDevVab" target="_blank" class="button">GitHub</a>
 <a href="https://www.linkedin.com/in/vaibhav-sharma-a597b5267" target="_blank" class="button">LinkedIn</a>
 </div>
