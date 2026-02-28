@@ -11,12 +11,24 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
 font-family:'Inter',sans-serif;
-background:#050509;
+background:#000;
 color:#fff;
 overflow-x:hidden;
 cursor:none;
+}
+
+/* ===== SPACE BACKGROUND ===== */
+#space{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+background:radial-gradient(circle at center, #0a0a1a 0%, #000 70%);
 }
 
 /* Cursor */
@@ -89,7 +101,7 @@ margin-bottom:50px;
 text-align:center;
 }
 
-/* Glass Cards */
+/* Glass */
 .glass{
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.1);
@@ -109,11 +121,9 @@ grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:30px;
 }
 
-/* ===== ANIMATED VIDEO SLIDER ===== */
+/* ===== VIDEO SLIDER ===== */
 
-.slider-wrapper{
-position:relative;
-}
+.slider-wrapper{position:relative;}
 
 .video-slider{
 display:flex;
@@ -171,7 +181,6 @@ margin-left:3px;
 transform:translate(-50%,-50%) scale(1.15);
 }
 
-/* Arrows */
 .arrow{
 position:absolute;
 top:45%;
@@ -230,6 +239,7 @@ color:#555;
 
 <body>
 
+<canvas id="space"></canvas>
 <div class="loader">INITIALIZING XR SYSTEM...</div>
 <div class="cursor"></div>
 
@@ -279,14 +289,12 @@ Hands-on with Blender, Level Design, and scalable system architecture.
 
 <div class="video-slider" id="videoSlider">
 
-<a href="https://www.youtube.com/watch?v=VIDEO_ID_1" target="_blank" class="video-item">
-<img src="https://img.youtube.com/vi/VIDEO_ID_1/maxresdefault.jpg">
+<a href="https://www.youtube.com/watch?v=pUBeJQDm9Jo" target="_blank" class="video-item">
+<img src="https://img.youtube.com/vi/pUBeJQDm9Jo/maxresdefault.jpg">
 <div class="play-icon">
 <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
 </div>
 </a>
-
-<!-- Duplicate above block for all 15 videos -->
 
 </div>
 </div>
@@ -304,9 +312,9 @@ Hands-on with Blender, Level Design, and scalable system architecture.
 <section id="contact" class="section">
 <h2>Contact</h2>
 <div class="glass">
-Email: vaibhav@email.com <br><br>
-<a href="https://github.com/yourusername" target="_blank" class="button">GitHub</a>
-<a href="https://linkedin.com/in/yourprofile" target="_blank" class="button">LinkedIn</a>
+Email: your-email@gmail.com <br><br>
+<a href="https://github.com/GameDevVab" target="_blank" class="button">GitHub</a>
+<a href="https://www.linkedin.com/in/vaibhav-sharma-a597b5267" target="_blank" class="button">LinkedIn</a>
 </div>
 </section>
 
@@ -340,6 +348,44 @@ left:value,
 behavior:'smooth'
 });
 }
+
+/* SPACE ANIMATION */
+const canvas = document.getElementById("space");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stars=[];
+for(let i=0;i<250;i++){
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+radius:Math.random()*1.5,
+speed:Math.random()*0.5
+});
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="white";
+stars.forEach(star=>{
+ctx.beginPath();
+ctx.arc(star.x,star.y,star.radius,0,Math.PI*2);
+ctx.fill();
+star.y+=star.speed;
+if(star.y>canvas.height){
+star.y=0;
+star.x=Math.random()*canvas.width;
+}
+});
+requestAnimationFrame(animate);
+}
+animate();
+
+window.addEventListener("resize",()=>{
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+});
 </script>
 
 </body>
