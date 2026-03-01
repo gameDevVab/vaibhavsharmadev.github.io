@@ -75,6 +75,13 @@ background:linear-gradient(90deg,#00f0ff,#ff00c8);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
+/* CUSTOM CURSOR */
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
 
 /* Sections */
 .section{padding:120px 8%;}
@@ -258,21 +265,70 @@ color:#555;
 
 <section id="about" class="section">
 <h2>About</h2>
+
 <div class="glass">
-XR Developer with 2+ years of experience building immersive VR Educational Content,
-Mixed Reality Simulations, and Projector-based Interactive Systems.
+<p style="line-height:1.8; font-size:1.05rem;">
+
+I build immersive XR experiences using <strong>Unity</strong> that turn complex ideas into intuitive, interactive simulations.
+
+<br><br>
+
+With <strong>2+ years of hands-on experience in Unity and C#</strong>, I specialize in:
+
+<br><br>
+
+• XR Interaction Toolkit systems  
+• Real-time 3D simulations  
+• Physics-based interaction design  
+• Quest performance optimization (72+ FPS)  
+• Modular architecture & clean code structure  
+
+<br><br>
+
+My work focuses on creating VR learning modules, interactive simulations, and immersive systems that maintain high performance while delivering meaningful user experiences.
+
+<br><br>
+
+I’m particularly interested in:
+
+<br><br>
+
+– VR for Education  
+– Simulation-based Training  
+– Serious Games  
+– Real-time Interactive Systems  
+
+<br><br>
+
+Currently open to collaborating on XR, simulation, and immersive product development projects.
+
+</p>
 </div>
 </section>
-
 <section id="expertise" class="section">
 <h2>Expertise</h2>
 <div class="grid">
-<div class="glass">VR Education Systems</div>
-<div class="glass">Mixed Reality Simulation</div>
-<div class="glass">Projector Based Interactive Setup</div>
+
+<div class="glass">Virtual Reality (VR) Development</div>
+<div class="glass">Augmented Reality (AR) Systems</div>
+<div class="glass">Mixed Reality (MR) Experiences</div>
+
+<div class="glass">XR Interaction Toolkit</div>
+<div class="glass">Meta Quest Optimization (72+ FPS)</div>
+<div class="glass">Physics-Based Interaction Design</div>
+
+<div class="glass">Unity (C# Advanced)</div>
+<div class="glass">Real-Time 3D Simulations</div>
+<div class="glass">Modular Architecture & Clean Code</div>
+
+<div class="glass">REST API Integration</div>
+<div class="glass">Firebase (Auth, Firestore, Realtime DB)</div>
+<div class="glass">Cloud Data Sync & Leaderboards</div>
+
+<div class="glass">Multiplayer Systems (Basic Networking)</div>
+<div class="glass">Performance Profiling & Debugging</div>
 <div class="glass">Blender & Level Design</div>
-<div class="glass">Advanced Debugging</div>
-<div class="glass">Team Leadership</div>
+
 </div>
 </section>
 
@@ -344,6 +400,27 @@ Mixed Reality Simulations, and Projector-based Interactive Systems.
 </div>
 </div>
 </section>
+
+</section>  <!-- End of Projects -->
+
+<!-- ===== CONTACT SECTION START ===== -->
+<section id="contact" class="section">
+<h2>Contact</h2>
+<div class="glass" style="text-align:center;">
+
+<p style="margin-bottom:20px; font-size:1.05rem;">
+Let’s build immersive and impactful XR experiences together.
+</p>
+
+<a href="mailto:vaibhavsharmadev31@gmail.com" class="button">Email Me</a>
+<a href="https://github.com/GameDevVab" target="_blank" class="button">GitHub</a>
+<a href="https://www.linkedin.com/in/vaibhav-sharma-a597b5267" target="_blank" class="button">LinkedIn</a>
+
+</div>
+</section>
+<!-- ===== CONTACT SECTION END ===== -->
+
+<footer>© 2026 Vaibhav Sharma | XR Developer</footer>
 
 <script>
 new Typed("#typed",{
