@@ -105,13 +105,6 @@ background:linear-gradient(90deg,#00f0ff,#ff00c8);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
-/* CUSTOM CURSOR */
-const cursor = document.querySelector(".cursor");
-
-document.addEventListener("mousemove", (e) => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-});
 
 /* Sections */
 .section{padding:120px 8%;}
@@ -468,6 +461,13 @@ ctx.fill();
 requestAnimationFrame(animate);
 }
 animate();
+  /* CUSTOM CURSOR */
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
 </script>
 
 </body>
